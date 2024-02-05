@@ -1,4 +1,4 @@
-import { blocks } from "@/components/blocks";
+import { blocks } from "@/_components/blocks";
 
 const RenderBlocks = ({ layout }) => (
   <div>
