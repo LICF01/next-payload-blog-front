@@ -5,6 +5,7 @@ export const PAGES = `
     Pages(limit: 300)  {
       docs {
         slug
+				name
       }
     }
   }
