@@ -1,23 +1,30 @@
+import { fetchDoc } from "@/_api/fetchDoc";
+import { fetchDocs } from "@/_api/fetchDocs";
+import { Page } from "@/_types/payload-types";
 import RenderBlocks from "@/_utils/RenderBlocks";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const pageReq = await fetch("http://localhost:4000/api/pages?limit=100");
-
-  const pageData = await pageReq.json();
-
-  return pageData.docs.map((el) => ({ slug: [el.slug] }));
+  try {
+    const pages = await fetchDocs<Page>("pages");
+    return pages?.map(({ slug }) => slug);
+  } catch (error) {
+    return [];
+  }
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const slug = params.slug[0];
 
-  const query = `http://localhost:4000/api/pages?where[slug][equals]=${slug}`;
+  let page: Page | null = null;
+  page = await fetchDoc<Page>({
+    collection: "pages",
+    slug,
+  });
 
-  const pageReq = await fetch(query);
-
-  const pageData = await pageReq.json();
-
-  const page = pageData.docs[0];
+  if (!page) {
+    return notFound();
+  }
 
   return (
     <div>
