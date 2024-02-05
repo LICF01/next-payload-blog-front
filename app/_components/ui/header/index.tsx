@@ -1,6 +1,16 @@
 import { fetchDocs } from "@/_api/fetchDocs";
+import { fetchHeader } from "@/_api/fetchGlobals";
 import { Page } from "@/_types/payload-types";
 import React from "react";
+
+const getHeader = async () => {
+  try {
+    const Header = await fetchHeader();
+    return Header;
+  } catch (error) {
+    return [];
+  }
+};
 
 const getNavItems = async () => {
   try {
@@ -12,8 +22,9 @@ const getNavItems = async () => {
 };
 
 export default async function Header() {
-  const navItems = await getNavItems();
+  const [navItems, header] = await Promise.all([getNavItems(), getHeader()]);
 
+  console.log(navItems, header);
   return (
     <header>
       <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -21,7 +32,7 @@ export default async function Header() {
           href="/"
           className="font-semibold uppercase hover:text-primary group inline-flex py-6 text-2xl tracking-widest transition focus-visible:outline-none"
         >
-          <span>""</span>
+          <span>{header.siteName}</span>
         </a>
         <div className="flex items-center">
           <nav>
