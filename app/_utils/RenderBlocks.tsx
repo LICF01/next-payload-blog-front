@@ -1,15 +1,20 @@
 import { blocks } from "@/_components/blocks";
+import { Page } from "@/_types/payload-types";
 
-const RenderBlocks = ({ layout }) => (
+type Props = {
+  layout: Page["layout"];
+};
+
+const RenderBlocks = ({ layout }: Props) => (
   <div>
-    {layout.map((block, i) => {
-      const Block = blocks[block.blockType];
-      console.log("Block", Block);
-      if (Block) {
-        return <Block key={i} {...block} />;
-      }
-      return null;
-    })}
+    {layout &&
+      layout.map((block, i) => {
+        const Block = blocks[block.blockType];
+        if (Block) {
+          return <Block key={i} {...block} />;
+        }
+        return null;
+      })}
   </div>
 );
 
