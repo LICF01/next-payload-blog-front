@@ -24,7 +24,6 @@ const getNavItems = async () => {
 export default async function Header() {
   const [navItems, header] = await Promise.all([getNavItems(), getHeader()]);
 
-  console.log(navItems, header);
   return (
     <header>
       <div className="flex items-center justify-between max-w-7xl mx-auto">
