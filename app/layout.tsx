@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_components/ui/header";
+import { Providers } from "./_components/Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,13 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className="min-h-lvh flex flex-col justify-between antialiased transition
- px-4 md:px-10 lg:px-20 font-sans"
+ px-4 md:px-10 lg:px-20 font-sans "
       >
-        <Header />
-        <main className="h-full max-w-7xl mx-auto">{children}</main>
+        <Providers>
+          <Header />
+          <main className="h-full max-w-7xl mx-auto">{children}</main>
+        </Providers>
       </body>
     </html>
   );

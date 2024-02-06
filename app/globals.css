@@ -4,34 +4,22 @@
 
 :root {
   --background: 0 0% 94%;
-  --foreground: 0 0% 98%;
+  --foreground: 250 10% 11.8%;
   --border: 0 0% 87%;
-  --accent: 352 83% 58%;
-  --accent-content: 0 0% 100%;
-  --accent-light: 353 83% 68%;
-  --accent-dark: 352 84% 48%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 15%;
-    --border: 0 0% 25%;
-    --accent: 352 83% 58%;
-    --accent-content: 0 0% 100%;
-    --accent-light: 353 83% 68%;
-    --accent-dark: 352 84% 48%;
-  }
+  --accent: 356.4 64.3% 46%;
+  --accent-light: 356.4 64.3% 56%;
+  --accent-dark: 356.4 64.3% 36%;
 }
 
 body {
+  background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      hsl(var(--background-end-rgb))
-    )
-    hsl(var(--background-start-rgb));
+}
+
+.dark {
+  --background: 250 10% 11.8%;
+  --foreground: 240 6.9% 88.6%;
+  --border: 0 0% 25%;
 }
 
 @layer utilities {

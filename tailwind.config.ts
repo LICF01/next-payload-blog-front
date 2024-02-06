@@ -1,11 +1,8 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
@@ -18,7 +15,6 @@ const config: Config = {
         foreground: "hsl(var(--foreground) / <alpha-value>)",
         border: "hsl(var(--border) / <alpha-value>)",
         accent: "hsl(var(--accent) / <alpha-value>)",
-        "accent-content": "hsl(var(--accent-content) / <alpha-value>)",
         "accent-dark": "hsl(var(--accent-dark) / <alpha-value>)",
         "accent-light": "hsl(var(--accent-light) / <alpha-value>)",
       },
