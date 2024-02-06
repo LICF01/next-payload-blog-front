@@ -55,7 +55,7 @@ export interface Page {
         | {
             id: string | null
             title: string
-            caption?: string | null
+            description?: string | null
             blockName?: string | null
             blockType: 'youTubeEmbed'
           }

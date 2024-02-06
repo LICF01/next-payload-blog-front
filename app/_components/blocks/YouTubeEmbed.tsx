@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 type YouTubeEmbedProps = {
-  id: string
+  id: string | null
   title: string
   description?: string | null
   blockName?: string | null
