@@ -6,9 +6,9 @@
   --background: 0 0% 94%;
   --foreground: 250 10% 11.8%;
   --border: 0 0% 87%;
-  --accent: 356.4 64.3% 46%;
-  --accent-light: 356.4 64.3% 56%;
-  --accent-dark: 356.4 64.3% 36%;
+  --accent: 356.4 64.3% 56%;
+  --accent-light: 356.4 64.3% 66%;
+  --accent-dark: 356.4 64.3% 46%;
 }
 
 body {
@@ -20,6 +20,7 @@ body {
   --background: 250 10% 11.8%;
   --foreground: 240 6.9% 88.6%;
   --border: 0 0% 25%;
+  --accent: 356.4 64.3% 46%;
 }
 
 @layer utilities {

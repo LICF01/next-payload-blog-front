@@ -21,7 +21,7 @@ const styles = tv({
   variants: {
     isDisabled: {
       false:
-        'text-gray-800 dark:text-zinc-300 hover:bg-gray-100 pressed:bg-gray-200 dark:hover:bg-zinc-600 dark:pressed:bg-zinc-500 group-invalid:border-red-600 forced-colors:group-invalid:border-[Mark]',
+        'text-foreground hover:bg-gray-100 pressed:bg-gray-200 dark:hover:bg-zinc-600 dark:pressed:bg-zinc-500 group-invalid:border-red-600 forced-colors:group-invalid:border-[Mark]',
       true: 'text-gray-200 dark:text-zinc-600 forced-colors:text-[GrayText] dark:bg-zinc-800 dark:border-white/5 forced-colors:border-[GrayText]',
     },
   },
@@ -57,7 +57,7 @@ export function Select<T extends object>({
         <SelectValue className='flex-1 text-sm placeholder-shown:italic' />
         <ChevronDown
           aria-hidden
-          className='h-4 text-gray-600 group-disabled:text-gray-200 dark:text-zinc-400 dark:group-disabled:text-zinc-600 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
+          className='h-4 text-foreground group-disabled:text-gray-200 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
         />
       </Button>
       {description && <Description>{description}</Description>}

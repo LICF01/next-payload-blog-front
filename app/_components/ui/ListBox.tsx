@@ -26,7 +26,7 @@ export function ListBox<T extends object>({
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'rounded-lg border border-gray-300 p-1 outline-0 dark:border-zinc-600',
+        'rounded-lg border border-border p-1 outline-0 ',
       )}
     >
       {children}
@@ -39,12 +39,11 @@ export const itemStyles = tv({
   base: 'group relative flex items-center gap-8 cursor-default select-none py-1.5 px-2.5 rounded-md will-change-transform text-sm forced-color-adjust-none',
   variants: {
     isSelected: {
-      false:
-        'text-slate-700 dark:text-zinc-300 hover:bg-slate-200 dark:hover:bg-zinc-700 -outline-offset-2',
-      true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] [&:has(+[data-selected])]:rounded-b-none [&+[data-selected]]:rounded-t-none -outline-offset-4 outline-white dark:outline-white forced-colors:outline-[HighlightText]',
+      false: 'text-foreground hover:bg-accent-light -outline-offset-2',
+      true: 'bg-accent text-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] [&:has(+[data-selected])]:rounded-b-none [&+[data-selected]]:rounded-t-none -outline-offset-4 outline-white dark:outline-white forced-colors:outline-[HighlightText]',
     },
     isDisabled: {
-      true: 'text-slate-300 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      true: 'text-foreground/20 forced-colors:text-[GrayText]',
     },
   },
 })
@@ -69,11 +68,11 @@ export const dropdownItemStyles = tv({
   base: 'group flex items-center gap-4 cursor-default select-none py-2 pl-3 pr-1 rounded-lg outline outline-0 text-sm forced-color-adjust-none',
   variants: {
     isDisabled: {
-      false: 'text-gray-900 dark:text-zinc-100',
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      false: 'text-foreground',
+      true: 'text-foregrond/20 forced-colors:text-[GrayText]',
     },
     isFocused: {
-      true: 'bg-blue-600 text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+      true: 'bg-accent text-background  forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
   },
 })
