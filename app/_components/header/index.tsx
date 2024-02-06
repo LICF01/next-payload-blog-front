@@ -1,7 +1,8 @@
 import { fetchDocs } from '@/_api/fetchDocs'
 import { fetchHeader } from '@/_api/fetchGlobals'
 import { Page } from '@/_types/payload-types'
-import React from 'react'
+
+import ThemeSwither from './ThemeSwitcher'
 
 const getHeader = async () => {
   try {
@@ -33,21 +34,20 @@ export default async function Header() {
         >
           <span>{header.siteName}</span>
         </a>
-        <div className='flex items-center'>
-          <nav>
-            <ul className='flex gap-4'>
-              {navItems
-                ? navItems.map(({ slug, name }) => (
-                    <li>
-                      <a href={`/${slug}`}>
-                        <span className='group-hover:underline'>{name}</span>
-                      </a>
-                    </li>
-                  ))
-                : null}
-            </ul>
-          </nav>
-        </div>
+        <nav>
+          <ul className='flex gap-4'>
+            {navItems
+              ? navItems.map(({ slug, name }) => (
+                  <li>
+                    <a href={`/${slug}`}>
+                      <span className='group-hover:underline'>{name}</span>
+                    </a>
+                  </li>
+                ))
+              : null}
+          </ul>
+        </nav>
+        <ThemeSwither />
       </div>
     </header>
   )
