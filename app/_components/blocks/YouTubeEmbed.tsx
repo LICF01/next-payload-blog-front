@@ -2,7 +2,15 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-export default function YouTubeEmbed(props) {
+type YouTubeEmbedProps = {
+  id: string
+  title: string
+  description?: string | null
+  blockName?: string | null
+  blockType: 'hero'
+}
+
+export default function YouTubeEmbed(props: YouTubeEmbedProps) {
   const { id, title } = props
   const [showVideo, setShowVideo] = useState(false)
   return (

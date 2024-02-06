@@ -27,7 +27,7 @@ export const YOUTUBEEMBED = `
 	... on YouTubeEmbed {
 		id
 		title
-		caption
+		description
 		blockName
 		blockType
 	}
