@@ -1,15 +1,16 @@
-import { HERO, TWOCOLUMN } from "./blocks";
+import { HERO, TWOCOLUMN, YOUTUBEEMBED } from './blocks'
 
 export const PAGES = `
   query Pages {
     Pages(limit: 300)  {
       docs {
+				id
         slug
 				name
       }
     }
   }
-`;
+`
 
 export const PAGE = `
   query Page($slug: String, $draft: Boolean) {
@@ -21,8 +22,9 @@ export const PAGE = `
         layout {
 					${HERO}
 					${TWOCOLUMN}
+					${YOUTUBEEMBED}
         }
       }
     }
   }
-`;
+`

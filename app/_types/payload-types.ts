@@ -8,93 +8,104 @@
 
 export interface Config {
   collections: {
-    users: User;
-    pages: Page;
-    media: Media;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
-  };
-  globals: {};
+    users: User
+    pages: Page
+    media: Media
+    'payload-preferences': PayloadPreference
+    'payload-migrations': PayloadMigration
+  }
+  globals: {
+    header: Header
+  }
 }
 export interface User {
-  id: string;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password: string | null;
+  id: string
+  updatedAt: string
+  createdAt: string
+  email: string
+  resetPasswordToken?: string | null
+  resetPasswordExpiration?: string | null
+  salt?: string | null
+  hash?: string | null
+  loginAttempts?: number | null
+  lockUntil?: string | null
+  password: string | null
 }
 export interface Page {
-  id: string;
-  name: string;
-  slug?: string | null;
+  id: string
+  name: string
+  slug?: string | null
   layout?:
     | (
         | {
-            heading?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: "hero";
+            heading?: string | null
+            id?: string | null
+            blockName?: string | null
+            blockType: 'hero'
           }
         | {
-            heading?: string | null;
-            text?: string | null;
-            image?: string | Media | null;
-            direction?: ("default" | "reverse") | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: "twoColumn";
+            heading?: string | null
+            text?: string | null
+            image?: string | Media | null
+            direction?: ('default' | 'reverse') | null
+            id?: string | null
+            blockName?: string | null
+            blockType: 'twoColumn'
+          }
+        | {
+            id: string | null
+            title: string
+            caption?: string | null
+            blockName?: string | null
+            blockType: 'youTubeEmbed'
           }
       )[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    | null
+  updatedAt: string
+  createdAt: string
 }
 export interface Media {
-  id: string;
-  alt: string;
-  caption?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
+  id: string
+  alt: string
+  caption?: string | null
+  updatedAt: string
+  createdAt: string
+  url?: string | null
+  filename?: string | null
+  mimeType?: string | null
+  filesize?: number | null
+  width?: number | null
+  height?: number | null
 }
 export interface PayloadPreference {
-  id: string;
+  id: string
   user: {
-    relationTo: "users";
-    value: string | User;
-  };
-  key?: string | null;
+    relationTo: 'users'
+    value: string | User
+  }
+  key?: string | null
   value?:
     | {
-        [k: string]: unknown;
+        [k: string]: unknown
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    | null
+  updatedAt: string
+  createdAt: string
 }
 export interface PayloadMigration {
-  id: string;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+  id: string
+  name?: string | null
+  batch?: number | null
+  updatedAt: string
+  createdAt: string
 }
-
-declare module "payload" {
-  export interface GeneratedTypes extends Config {}
+export interface Header {
+  id: string
+  siteName: string
+  updatedAt?: string | null
+  createdAt?: string | null
 }

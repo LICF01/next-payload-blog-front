@@ -16,7 +16,7 @@ const getHeader = async () => {
 const getNavItems = async () => {
   try {
     const pages = await fetchDocs<Page>('pages')
-    return pages?.map(({ slug, name }) => ({ slug, name }))
+    return pages?.map(({ slug, name, id }) => ({ slug, name, id }))
   } catch (error) {
     return []
   }
@@ -32,13 +32,13 @@ export default async function Header() {
           href='/'
           className='hover:text-primary group inline-flex py-6 text-2xl font-semibold uppercase tracking-widest transition focus-visible:outline-none'
         >
-          <span>{header.siteName}</span>
+          <span>{!Array.isArray(header) && header?.siteName}</span>
         </a>
         <nav>
           <ul className='flex gap-4'>
             {navItems
-              ? navItems.map(({ slug, name }) => (
-                  <li>
+              ? navItems.map(({ slug, name, id }) => (
+                  <li key={id}>
                     <a href={`/${slug}`}>
                       <span className='group-hover:underline'>{name}</span>
                     </a>
