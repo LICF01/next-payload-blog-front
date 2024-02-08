@@ -8,104 +8,185 @@
 
 export interface Config {
   collections: {
-    users: User
-    pages: Page
-    media: Media
-    'payload-preferences': PayloadPreference
-    'payload-migrations': PayloadMigration
-  }
+    users: User;
+    pages: Page;
+    media: Media;
+    posts: Post;
+    categories: Category;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
+  };
   globals: {
-    header: Header
-  }
+    header: Header;
+  };
 }
 export interface User {
-  id: string
-  updatedAt: string
-  createdAt: string
-  email: string
-  resetPasswordToken?: string | null
-  resetPasswordExpiration?: string | null
-  salt?: string | null
-  hash?: string | null
-  loginAttempts?: number | null
-  lockUntil?: string | null
-  password: string | null
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password: string | null;
 }
 export interface Page {
-  id: string
-  name: string
-  slug?: string | null
+  id: string;
+  name: string;
+  slug?: string | null;
   layout?:
     | (
         | {
-            heading?: string | null
-            id?: string | null
-            blockName?: string | null
-            blockType: 'hero'
+            heading?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
           }
         | {
-            heading?: string | null
-            text?: string | null
-            image?: string | Media | null
-            direction?: ('default' | 'reverse') | null
-            id?: string | null
-            blockName?: string | null
-            blockType: 'twoColumn'
+            heading?: string | null;
+            text?: string | null;
+            image?: string | Media | null;
+            direction?: ('default' | 'reverse') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'twoColumn';
           }
         | {
-            id: string | null
-            title: string
-            description?: string | null
-            blockName?: string | null
-            blockType: 'youTubeEmbed'
+            id: string | null;
+            title: string;
+            description?: string | null;
+            blockName?: string | null;
+            blockType: 'youTubeEmbed';
+          }
+        | {
+            collection?: ('posts' | 'categories') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collection';
+          }
+        | {
+            alt: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'externalImage';
           }
       )[]
-    | null
-  updatedAt: string
-  createdAt: string
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Media {
-  id: string
-  alt: string
-  caption?: string | null
-  updatedAt: string
-  createdAt: string
-  url?: string | null
-  filename?: string | null
-  mimeType?: string | null
-  filesize?: number | null
-  width?: number | null
-  height?: number | null
+  id: string;
+  alt: string;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+export interface Post {
+  id: string;
+  cover?: ('image' | 'upload') | null;
+  title: string;
+  publishedDate: string;
+  categories: (string | Category)[];
+  relatedPosts?: (string | Post)[] | null;
+  slug?: string | null;
+  coverImage: {
+    type?: ('external' | 'local') | null;
+    localImage?: string | Media | null;
+    url?: string | null;
+    alt?: string | null;
+  };
+  layout: (
+    | {
+        id: string | null;
+        title: string;
+        description?: string | null;
+        blockName?: string | null;
+        blockType: 'youTubeEmbed';
+      }
+    | {
+        richText: {
+          root: {
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format:
+              | 'left'
+              | 'start'
+              | 'center'
+              | 'right'
+              | 'end'
+              | 'justify'
+              | '';
+            indent: number;
+            type: string;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }
+    | {
+        alt: string;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'externalImage';
+      }
+  )[];
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+export interface Category {
+  id: string;
+  title?: string | null;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface PayloadPreference {
-  id: string
+  id: string;
   user: {
-    relationTo: 'users'
-    value: string | User
-  }
-  key?: string | null
+    relationTo: 'users';
+    value: string | User;
+  };
+  key?: string | null;
   value?:
     | {
-        [k: string]: unknown
+        [k: string]: unknown;
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null
-  updatedAt: string
-  createdAt: string
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface PayloadMigration {
-  id: string
-  name?: string | null
-  batch?: number | null
-  updatedAt: string
-  createdAt: string
+  id: string;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Header {
-  id: string
-  siteName: string
-  updatedAt?: string | null
-  createdAt?: string | null
+  id: string;
+  siteName: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
