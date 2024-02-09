@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const slug = params.slug[0];
+  const slug = params.slug;
 
   let page: Page | null = null;
   page = await fetchDoc<Page>({
