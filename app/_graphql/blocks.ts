@@ -1,4 +1,4 @@
-import { MEDIA_FIELDS } from './media'
+import { MEDIA_FIELDS } from './media';
 
 export const HERO = `
 ...on Hero{
@@ -7,7 +7,7 @@ export const HERO = `
 	blockName
   blockType
 }
-`
+`;
 
 export const TWOCOLUMN = `
 ...on TwoColumn{
@@ -21,7 +21,7 @@ export const TWOCOLUMN = `
 	blockName
   blockType
 }
-`
+`;
 
 export const YOUTUBEEMBED = `
 	... on YouTubeEmbed {
@@ -31,4 +31,13 @@ export const YOUTUBEEMBED = `
 		blockName
 		blockType
 	}
-`
+`;
+
+export const COLLECTION = `
+...on Collection {
+	id
+	collection
+	blockName
+  blockType
+}
+`;

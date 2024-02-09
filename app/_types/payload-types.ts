@@ -93,7 +93,6 @@ export interface Media {
 }
 export interface Post {
   id: string;
-  cover?: ('image' | 'upload') | null;
   title: string;
   publishedDate: string;
   categories: (string | Category)[];

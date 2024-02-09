@@ -1,15 +1,20 @@
-import { PAGES } from "@/_graphql/pages";
-import { Config } from "@/_types/payload-types";
+import { PAGES } from '@/_graphql/pages';
+import { POSTS } from '@/_graphql/posts';
+import { Config } from '@/_types/payload-types';
 
 const queryMap = {
   pages: {
-    key: "Pages",
+    key: 'Pages',
     query: PAGES,
+  },
+  posts: {
+    key: 'Posts',
+    query: POSTS,
   },
 };
 
 export const fetchDocs = async <T>(
-  collection: keyof Config["collections"],
+  collection: keyof Config['collections'],
   variables?: Record<string, unknown>,
 ): Promise<T[]> => {
   if (!queryMap[collection])
@@ -22,18 +27,18 @@ export const fetchDocs = async <T>(
         query: queryMap[collection].query,
         variables,
       }),
-      cache: "no-store",
+      cache: 'no-store',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
       next: { tags: [collection] },
     },
   )
     ?.then((res) => res.json())
     ?.then((res) => {
       if (res.errors)
-        throw new Error(res?.errors?.[0]?.message ?? "Error fetching docs");
+        throw new Error(res?.errors?.[0]?.message ?? 'Error fetching docs');
       return res?.data?.[queryMap[collection].key]?.docs;
     });
 
