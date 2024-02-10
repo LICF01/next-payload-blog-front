@@ -1,6 +1,6 @@
 import { CATEGORIES } from '@/_graphql/categories';
 import { PAGES } from '@/_graphql/pages';
-import { POSTS } from '@/_graphql/posts';
+import { POSTS, POSTSSLUGS } from '@/_graphql/posts';
 import { Config } from '@/_types/payload-types';
 
 const queryMap = {
@@ -12,6 +12,10 @@ const queryMap = {
     key: 'Posts',
     query: POSTS,
   },
+  postsSlugs: {
+    key: 'Posts',
+    query: POSTSSLUGS,
+  },
   categories: {
     key: 'Categories',
     query: CATEGORIES,
@@ -19,7 +23,7 @@ const queryMap = {
 };
 
 export const fetchDocs = async <T>(
-  collection: keyof Config['collections'],
+  collection: keyof typeof queryMap,
   variables?: Record<string, unknown>,
 ): Promise<T[]> => {
   if (!queryMap[collection])

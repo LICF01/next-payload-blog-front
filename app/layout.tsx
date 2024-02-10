@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${crimsonPro.variable} ${raleway.variable}`}
     >
       <body
-        className={`flex min-h-lvh flex-col justify-between px-4 font-sans
+        className={`flex min-h-lvh flex-col px-4 font-sans
  antialiased transition md:px-10 lg:px-20 `}
       >
         <Providers>

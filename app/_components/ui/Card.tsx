@@ -37,7 +37,7 @@ export default function Card(props: Props) {
         };
 
   return (
-    <article className='flex flex-col gap-3 px-4'>
+    <article className='flex flex-col gap-2'>
       <div className='flex gap-2 text-sm font-medium text-foreground/70'>
         <a href={`/category/${categories[0]?.title}`}>
           <span className='font-normal capitalize transition-colors duration-300 hover:text-accent'>

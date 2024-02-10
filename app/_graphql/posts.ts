@@ -1,3 +1,4 @@
+import { RICHTEXT, YOUTUBEEMBED } from './blocks';
 import { MEDIA_FIELDS } from './media';
 
 export const IMAGE = `
@@ -10,10 +11,11 @@ export const IMAGE = `
 `;
 
 export const POSTS = `
-	query Posts($category: JSON) {
+	query Posts($categoryId: JSON, $slug: String) {
 	 Posts(
 			where: {
-				categories: { equals: $category}
+				categories: { equals: $categoryId }
+				slug: { equals: $slug }
 			}
 		) {
 			docs {
@@ -36,6 +38,25 @@ export const POSTS = `
 						${IMAGE}
 					}
 				}
+				layout {
+					${RICHTEXT}
+					${YOUTUBEEMBED}
+				}
+			}
+		}
+	}
+`;
+
+export const POSTSSLUGS = `
+	query Posts($categoryId: JSON, $slug: String) {
+	 Posts(
+			where: {
+				categories: { equals: $categoryId }
+				slug: { equals: $slug }
+			}
+		) {
+			docs {
+				slug
 			}
 		}
 	}

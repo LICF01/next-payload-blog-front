@@ -31,12 +31,12 @@ export default function postsGrid({ docs }: Props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const gridClass = `grid grid-cols-1 gap-4 ${currentColumnCount === 2 ? 'md:grid-cols-2' : ''} ${currentColumnCount === 3 ? 'lg:grid-cols-3' : ''}`;
+  const gridClass = `grid grid-cols-1 gap-6 ${currentColumnCount === 2 ? 'md:grid-cols-2' : ''} ${currentColumnCount === 3 ? 'lg:grid-cols-3 py-16' : ''}`;
 
   return (
     <div className={gridClass}>
       {columns.map((col, colIndex) => (
-        <div key={colIndex} className='grid gap-4'>
+        <div key={colIndex} className='grid gap-2'>
           {col.map((doc) => (
             <Card
               key={doc.slug}

@@ -41,3 +41,12 @@ export const COLLECTION = `
   blockType
 }
 `;
+
+export const RICHTEXT = `
+	... on RichText {
+		richText
+		id
+		blockName
+		blockType
+	}
+`;

@@ -22,8 +22,51 @@ const config: Config = {
         'accent-dark': 'hsl(var(--accent-dark) / <alpha-value>)',
         'accent-light': 'hsl(var(--accent-light) / <alpha-value>)',
       },
+
+      typography: {
+        '2xl': {
+          css: {
+            fontFamily: 'Crimson Pro variable',
+            fontSize: '22px',
+            fontWeight: '300',
+            p: {
+              marginBottom: '1rem',
+            },
+            h1: {
+              marginTop: 0,
+              fontSize: '4.768rem',
+            },
+            h2: {
+              fontSize: '2.441rem',
+            },
+            h3: {
+              fontSize: '1.953rem',
+            },
+            h4: {
+              fontSize: '1.563rem',
+            },
+            h5: {
+              fontSize: '1.25rem',
+            },
+            blockquote: {
+              fontFamily: 'Crimson Pro variable',
+              fontStyle: 'italic',
+              fontSize: '26px',
+              lineHeight: '1.3',
+              fontWeight: '400',
+            },
+          },
+        },
+        red: {
+          css: {
+            '--tw-prose-counters': 'hsl(var(--accent))',
+            '--tw-prose-bullets': 'hsl(var(--accent))',
+            '--tw-prose-quote-borders': 'hsl(var(--accent))',
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 export default config;
