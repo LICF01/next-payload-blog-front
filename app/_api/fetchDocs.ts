@@ -1,3 +1,4 @@
+import { CATEGORIES } from '@/_graphql/categories';
 import { PAGES } from '@/_graphql/pages';
 import { POSTS } from '@/_graphql/posts';
 import { Config } from '@/_types/payload-types';
@@ -10,6 +11,10 @@ const queryMap = {
   posts: {
     key: 'Posts',
     query: POSTS,
+  },
+  categories: {
+    key: 'Categories',
+    query: CATEGORIES,
   },
 };
 

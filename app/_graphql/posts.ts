@@ -10,8 +10,12 @@ export const IMAGE = `
 `;
 
 export const POSTS = `
-	query Posts {
-		Posts {
+	query Posts($category: JSON) {
+	 Posts(
+			where: {
+				categories: { equals: $category}
+			}
+		) {
 			docs {
 				id
 				title

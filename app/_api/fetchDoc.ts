@@ -1,16 +1,20 @@
-import { PAGE } from "@/_graphql/pages";
-import { Config } from "@/_types/payload-types";
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { CATEGORY } from '@/_graphql/categories';
+import { PAGE } from '@/_graphql/pages';
+import { Config } from '@/_types/payload-types';
 
 const queryMap = {
   pages: {
-    key: "Pages",
+    key: 'Pages',
     query: PAGE,
+  },
+  categories: {
+    key: 'Categories',
+    query: CATEGORY,
   },
 };
 
 export const fetchDoc = async <T>(args: {
-  collection: keyof Config["collections"];
+  collection: keyof Config['collections'];
   id?: string;
   slug?: string;
 }): Promise<T> => {
@@ -28,18 +32,18 @@ export const fetchDoc = async <T>(args: {
           slug,
         },
       }),
-      cache: "no-store",
+      cache: 'no-store',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
       next: { tags: [`${collection}_${slug}`] },
     },
   )
     ?.then((res) => res.json())
     ?.then((res) => {
       if (res.errors)
-        throw new Error(res?.errors?.[0]?.message ?? "Error fetching doc");
+        throw new Error(res?.errors?.[0]?.message ?? 'Error fetching doc');
       return res?.data?.[queryMap[collection].key]?.docs?.[0];
     });
 
