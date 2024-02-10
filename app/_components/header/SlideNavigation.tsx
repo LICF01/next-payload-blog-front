@@ -9,7 +9,7 @@ import SlideNavigationLink from './SlideNavigationLink';
 import { usePathname } from 'next/navigation';
 
 const buttonStyles = tv({
-  base: 'fixed right-[calc(var(--gap-padding)/1.5)] top-[calc(var(--gap-padding)/1.5)] z-[2] m-5 flex h-20 w-20 cursor-pointer items-center justify-center rounded-[50%] bg-foreground transition duration-300 hover:bg-accent',
+  base: 'fixed right-[calc(var(--gap-padding)/1.5)] top-[calc(var(--gap-padding)/1.5)] z-[20] m-5 flex h-20 w-20 cursor-pointer items-center justify-center rounded-[50%] bg-foreground transition duration-300 hover:bg-accent',
   variants: {
     isActive: {
       true: 'bg-accent',
@@ -53,7 +53,7 @@ export default function SlideNavigation({ navItems }: Props) {
             animate='enter'
             exit='exit'
             className={
-              'py-[15vh 10vh] fixed right-0 top-0 h-[100vh] w-full bg-foreground px-16 text-background md:w-2/4 lg:w-1/3 lg:px-[7.5vw]'
+              'py-[15vh 10vh] fixed right-0 top-0 z-10 h-[100vh] w-full bg-foreground px-16 text-background md:w-2/4 lg:w-1/3 lg:px-[7.5vw]'
             }
           >
             <nav
