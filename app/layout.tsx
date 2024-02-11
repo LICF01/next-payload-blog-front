@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/_components/header';
 import { Providers } from './_components/Providers';
 import { Crimson_Pro, Raleway } from 'next/font/google';
+import Transition from './_components/Transition';
 
 const crimsonPro = Crimson_Pro({
   subsets: ['latin'],
@@ -35,8 +36,10 @@ export default function RootLayout({
  antialiased transition md:px-10 lg:px-20 `}
       >
         <Providers>
-          <Header />
-          <main className='mx-auto h-full max-w-7xl'>{children}</main>
+          <Transition>
+            <Header />
+            <main className='mx-auto h-full max-w-7xl'>{children}</main>
+          </Transition>
         </Providers>
       </body>
     </html>
