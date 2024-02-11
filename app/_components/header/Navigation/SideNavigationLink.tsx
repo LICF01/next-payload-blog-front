@@ -12,10 +12,11 @@ type Props = {
   data: data;
   index: number;
   isActive: boolean;
+  onClick: () => void;
 };
 
-export default function SlideNavigationLink(props: Props) {
-  const { data, index, isActive } = props;
+export default function SideNavigationLink(props: Props) {
+  const { data, index, isActive, onClick } = props;
   const { slug, name, id } = data;
 
   return (
@@ -33,7 +34,9 @@ export default function SlideNavigationLink(props: Props) {
         className='absolute left-[-30px] h-2 w-2 rounded-[50%] bg-background'
       ></motion.div>
 
-      <Link href={`/${slug}`}>{name}</Link>
+      <Link href={`/${slug}`} onClick={onClick}>
+        {name}
+      </Link>
     </motion.div>
   );
 }
