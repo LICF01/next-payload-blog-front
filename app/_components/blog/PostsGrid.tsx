@@ -31,7 +31,7 @@ export default function postsGrid({ docs }: Props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const gridClass = `grid grid-cols-1 gap-6 ${currentColumnCount === 2 ? 'md:grid-cols-2' : ''} ${currentColumnCount === 3 ? 'lg:grid-cols-3 py-16' : ''}`;
+  const gridClass = `grid grid-cols-1 gap-6 ${currentColumnCount === 2 ? 'md:grid-cols-2' : ''} ${currentColumnCount === 3 ? 'lg:grid-cols-3 ' : ''}`;
 
   return (
     <div className={gridClass}>
