@@ -1,8 +1,8 @@
 import { fetchDoc } from '@/_api/fetchDoc';
 import { fetchDocs } from '@/_api/fetchDocs';
-import RichText from '@/_components/blocks/RichText';
 import { Post } from '@/_types/payload-types';
 import RenderBlocks from '@/_utils/RenderBlocks';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   try {
@@ -27,10 +27,23 @@ export default async function CategoryPage({
 
   console.log('doc', doc);
   return (
-    <section className='prose prose-red dark:prose-invert prose-headings:font-normal prose-headings:font-sans md:prose-lg lg:prose-2xl w-full max-w-none pt-24'>
+    <section className='prose prose-red w-full max-w-none pt-24 dark:prose-invert md:prose-lg lg:prose-2xl prose-headings:font-sans prose-headings:font-normal prose-img:m-0'>
       <div className='mx-auto max-w-6xl'>
         <h1 className='text-center'>{doc.title}</h1>
       </div>
+
+      {doc.coverImage.url && (
+        <div className=' relative mx-auto flex  h-[580px] justify-center '>
+          <Image
+            className='rounded-md object-cover'
+            src={doc.coverImage.url}
+            alt={doc.coverImage.alt || 'Cover Image'}
+            fill
+            loading='lazy'
+            sizes='100vw'
+          />
+        </div>
+      )}
 
       <div className='mx-auto mt-12 max-w-3xl'>
         <RenderBlocks layout={doc.layout} />;
@@ -38,17 +51,3 @@ export default async function CategoryPage({
     </section>
   );
 }
-
-// {coverImage.url && (
-//   <div className=' relative mx-auto flex  h-[580px] justify-center overflow-hidden'>
-//     <image
-//       className='h-full w-screen object-cover'
-//       src={coverImage.url}
-//       alt={coverImage.alt || 'Cover Image'}
-//     />
-//   </div>
-// )}
-// <div className='mx-auto mt-12 max-w-3xl'>
-//   // {body && <RichText content={body} />}
-//   //{' '}
-// </div>;
