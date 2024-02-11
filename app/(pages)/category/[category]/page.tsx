@@ -26,7 +26,7 @@ export default async function CategoryPage({
 
   let docs: Post[] | null = null;
   docs = await fetchDocs<Post>('posts', {
-    category: id,
+    categoryId: id,
   });
 
   return <PostsGrid docs={docs as Post[]} />;
