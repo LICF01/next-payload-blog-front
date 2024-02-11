@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { scale, slide } from './animations';
+import { Music2 } from 'lucide-react';
 
 type data = {
   slug: string | null | undefined;
@@ -28,12 +29,15 @@ export default function SideNavigationLink(props: Props) {
       animate='enter'
       exit='exit'
     >
-      <motion.div
-        variants={scale}
-        animate={isActive ? 'open' : 'closed'}
-        className='absolute left-[-30px] h-2 w-2 rounded-[50%] bg-background'
-      ></motion.div>
-
+      {isActive && (
+        <motion.div
+          variants={scale}
+          animate={isActive ? 'open' : 'closed'}
+          className='absolute left-[-40px] text-background'
+        >
+          <Music2 />
+        </motion.div>
+      )}
       <Link href={`/${slug}`} onClick={onClick}>
         {name}
       </Link>

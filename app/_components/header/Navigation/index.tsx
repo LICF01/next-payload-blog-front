@@ -3,6 +3,9 @@ import { useInView } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 import SideNavigation from './SideNavigation';
 import SideNavigationToggle from './SideNavigationToggle';
+import { Music2 } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 type NavItems = {
   slug: string | null | undefined;
@@ -12,6 +15,7 @@ type NavItems = {
 
 export default function Navigation({ navItems }: { navItems: NavItems }) {
   const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname();
   const ref = useRef(null);
   const headerNav = useInView(ref, {
     margin: '200px',
@@ -23,10 +27,19 @@ export default function Navigation({ navItems }: { navItems: NavItems }) {
         <ul className='flex gap-4'>
           {navItems
             ? navItems.map(({ slug, name, id }) => (
-                <li key={id}>
-                  <a href={`/${slug}`}>
-                    <span className='group-hover:underline'>{name}</span>
-                  </a>
+                <li key={id} className='flex items-center'>
+                  <Link href={`/${slug}`}>
+                    <span
+                      className={
+                        pathname === '/' + slug
+                          ? 'flex pr-2 text-accent group-hover:underline'
+                          : 'flex group-hover:underline'
+                      }
+                    >
+                      {pathname === '/' + slug && <Music2 size={15} />}
+                      {name}
+                    </span>
+                  </Link>
                 </li>
               ))
             : null}
