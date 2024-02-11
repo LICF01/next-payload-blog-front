@@ -4,6 +4,8 @@ import { menuSlide } from './animations';
 import Curve from './Curve';
 import SlideNavigationLink from './SideNavigationLink';
 import { usePathname } from 'next/navigation';
+import { useRef } from 'react';
+import useOutsideClick from '@/_hooks/useOutsideClick';
 
 type Props = {
   navItems?: { slug: string | null | undefined; name: string; id: string }[];
@@ -13,6 +15,8 @@ type Props = {
 
 export default function SideNavigation({ navItems, isActive, onClick }: Props) {
   const pathname = usePathname();
+  const ref = useRef(null);
+  useOutsideClick(ref, onClick);
 
   return (
     <>
@@ -26,6 +30,7 @@ export default function SideNavigation({ navItems, isActive, onClick }: Props) {
             className={
               'py-[15vh 10vh] fixed right-0 top-0 z-10 h-[100vh] w-full bg-foreground px-16 text-background md:w-2/4 lg:w-1/3 lg:px-[7.5vw]'
             }
+            ref={ref}
           >
             <nav
               aria-hidden='true'

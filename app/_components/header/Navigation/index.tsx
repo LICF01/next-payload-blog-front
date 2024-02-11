@@ -1,6 +1,6 @@
 'use client';
 import { useInView } from 'framer-motion';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SideNavigation from './SideNavigation';
 import SideNavigationToggle from './SideNavigationToggle';
 import { Music2 } from 'lucide-react';
@@ -21,6 +21,12 @@ export default function Navigation({ navItems }: { navItems: NavItems }) {
     margin: '200px',
   });
 
+  useEffect(() => {
+    if (headerNav) {
+      setIsActive(false);
+    }
+  }, [headerNav]);
+
   return (
     <div>
       <nav ref={ref}>
@@ -32,8 +38,8 @@ export default function Navigation({ navItems }: { navItems: NavItems }) {
                     <span
                       className={
                         pathname === '/' + slug
-                          ? 'flex pr-2 text-accent group-hover:underline'
-                          : 'flex group-hover:underline'
+                          ? 'flex items-center pr-2 text-accent'
+                          : 'flex items-center hover:text-accent hover:underline'
                       }
                     >
                       {pathname === '/' + slug && <Music2 size={15} />}
