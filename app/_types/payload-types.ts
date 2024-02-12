@@ -121,14 +121,7 @@ export interface Post {
               [k: string]: unknown;
             }[];
             direction: ('ltr' | 'rtl') | null;
-            format:
-              | 'left'
-              | 'start'
-              | 'center'
-              | 'right'
-              | 'end'
-              | 'justify'
-              | '';
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
             indent: number;
             type: string;
             version: number;
@@ -154,6 +147,7 @@ export interface Category {
   id: string;
   title?: string | null;
   description?: string | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }

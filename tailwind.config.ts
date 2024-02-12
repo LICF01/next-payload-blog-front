@@ -33,7 +33,7 @@ const config: Config = {
               marginBottom: '1rem',
             },
             h1: {
-              marginTop: 0,
+              margin: 0,
               fontSize: '4.768rem',
             },
             h2: {
