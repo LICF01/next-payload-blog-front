@@ -4,13 +4,14 @@ import { menuSlide } from './animations';
 import Curve from './Curve';
 import SlideNavigationLink from './SideNavigationLink';
 import { usePathname } from 'next/navigation';
-import { useRef } from 'react';
+import { MouseEventHandler, useRef } from 'react';
 import useOutsideClick from '@/_hooks/useOutsideClick';
+import { Page } from '@/_types/payload-types';
 
 type Props = {
-  navItems?: { slug: string | null | undefined; name: string; id: string }[];
+  navItems?: Page[];
   isActive: boolean;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLAnchorElement> | undefined;
 };
 
 export default function SideNavigation({ navItems, isActive, onClick }: Props) {

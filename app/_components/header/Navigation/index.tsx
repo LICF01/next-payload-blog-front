@@ -6,14 +6,9 @@ import SideNavigationToggle from './SideNavigationToggle';
 import { Music2 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Page } from '@/_types/payload-types';
 
-type NavItems = {
-  slug: string | null | undefined;
-  name: string;
-  id: string;
-}[];
-
-export default function Navigation({ navItems }: { navItems: NavItems }) {
+export default function Navigation({ navItems }: { navItems: Page[] }) {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   const ref = useRef(null);
@@ -32,7 +27,7 @@ export default function Navigation({ navItems }: { navItems: NavItems }) {
       <nav ref={ref}>
         <ul className='flex gap-4'>
           {navItems
-            ? navItems.map(({ slug, name, id }) => (
+            ? navItems.map(({ slug, title, id }) => (
                 <li key={id} className='flex items-center'>
                   <Link href={`/${slug}`}>
                     <span
@@ -43,7 +38,7 @@ export default function Navigation({ navItems }: { navItems: NavItems }) {
                       }
                     >
                       {pathname === '/' + slug && <Music2 size={15} />}
-                      {name}
+                      {title}
                     </span>
                   </Link>
                 </li>

@@ -35,7 +35,8 @@ export interface User {
 }
 export interface Page {
   id: string;
-  name: string;
+  title: string;
+  description: string;
   slug?: string | null;
   layout?:
     | (
@@ -75,6 +76,11 @@ export interface Page {
           }
       )[]
     | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -94,6 +100,7 @@ export interface Media {
 export interface Post {
   id: string;
   title: string;
+  description: string;
   publishedDate: string;
   categories: (string | Category)[];
   relatedPosts?: (string | Post)[] | null;
@@ -121,7 +128,14 @@ export interface Post {
               [k: string]: unknown;
             }[];
             direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            format:
+              | 'left'
+              | 'start'
+              | 'center'
+              | 'right'
+              | 'end'
+              | 'justify'
+              | '';
             indent: number;
             type: string;
             version: number;
@@ -139,6 +153,11 @@ export interface Post {
         blockType: 'externalImage';
       }
   )[];
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

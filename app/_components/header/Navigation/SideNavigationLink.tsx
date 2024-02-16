@@ -2,23 +2,19 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { scale, slide } from './animations';
 import { Music2 } from 'lucide-react';
-
-type data = {
-  slug: string | null | undefined;
-  name: string;
-  id: string;
-};
+import { Page } from '@/_types/payload-types';
+import { MouseEventHandler } from 'react';
 
 type Props = {
-  data: data;
+  data: Page;
   index: number;
   isActive: boolean;
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLAnchorElement> | undefined;
 };
 
 export default function SideNavigationLink(props: Props) {
   const { data, index, isActive, onClick } = props;
-  const { slug, name, id } = data;
+  const { slug, title, id } = data;
 
   return (
     <motion.div
@@ -39,7 +35,7 @@ export default function SideNavigationLink(props: Props) {
         </motion.div>
       )}
       <Link href={`/${slug}`} onClick={onClick}>
-        {name}
+        {title}
       </Link>
     </motion.div>
   );

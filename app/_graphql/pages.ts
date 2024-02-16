@@ -1,4 +1,5 @@
 import { COLLECTION, HERO, TWOCOLUMN, YOUTUBEEMBED } from './blocks';
+import { MEDIA_FIELDS } from './media';
 
 export const PAGES = `
   query Pages {
@@ -6,7 +7,7 @@ export const PAGES = `
       docs {
 				id
         slug
-				name
+				title
       }
     }
   }
@@ -17,7 +18,7 @@ export const PAGE = `
     Pages(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
       docs {
         id
-       	name 
+				title
 				slug
         layout {
 					${HERO}
@@ -25,6 +26,13 @@ export const PAGE = `
 					${YOUTUBEEMBED}
 					${COLLECTION}
         }
+				meta {
+					title
+					description
+					image {
+						${MEDIA_FIELDS}
+					}
+				}
       }
     }
   }

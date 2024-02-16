@@ -16,7 +16,7 @@ const getHeader = async () => {
 const getNavItems = async () => {
   try {
     const pages = await fetchDocs<Page>('pages');
-    return pages?.map(({ slug, name, id }) => ({ slug, name, id }));
+    return pages?.map(({ slug, title, id }) => ({ slug, title, id }));
   } catch (error) {
     return [];
   }
@@ -32,7 +32,7 @@ export default async function Header() {
       >
         <span>{!Array.isArray(header) && header?.siteName}</span>
       </a>
-      <Navigation navItems={navItems} />
+      <Navigation navItems={navItems as Page[]} />
     </header>
   );
 }
