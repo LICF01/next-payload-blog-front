@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 export async function generateStaticParams() {
   try {
     const pages = await fetchDocs<Page>('pages');
+    return pages;
   } catch (error) {
     return [];
   }
@@ -26,7 +27,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <PageDescription
-        name={page.name}
+        title={page.title}
         description='asdfasdgasdgasdgasdgasdgasdg'
       />
       <RenderBlocks layout={page.layout} />
