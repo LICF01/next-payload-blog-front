@@ -1,13 +1,10 @@
 import { RICHTEXT, YOUTUBEEMBED } from './blocks';
 import { MEDIA_FIELDS } from './media';
 
-export const IMAGE = `
-	type
-	localImage {
+export const COVER_IMAGE = `
+	coverImage {
 		${MEDIA_FIELDS}
 	}
-	url
-	alt
 `;
 
 export const POSTS = `
@@ -22,25 +19,30 @@ export const POSTS = `
 				id
 				title
 				slug
+				description
 				publishedDate
-				coverImage {
-					${IMAGE}
+				${COVER_IMAGE}
+				layout {
+					${RICHTEXT}
+					${YOUTUBEEMBED}
+				}
+				meta {
+					title
+					description
+					image {
+						${MEDIA_FIELDS}
+					}
 				}
 				categories {
 					id
 					title
-					description
+					slug
 				}
 				relatedPosts {
 					id
 					title
-					coverImage {
-						${IMAGE}
-					}
-				}
-				layout {
-					${RICHTEXT}
-					${YOUTUBEEMBED}
+					slug
+					${COVER_IMAGE}
 				}
 			}
 		}

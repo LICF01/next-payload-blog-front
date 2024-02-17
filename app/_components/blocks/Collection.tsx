@@ -5,9 +5,9 @@ import { Post } from '@/_types/payload-types';
 
 const getDocs = async (collection: string) => {
   try {
-    console.log('collection', collection);
     return await fetchDocs(collection as any);
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
@@ -21,7 +21,7 @@ type CollectionProps = {
 
 export default async function Collection(props: CollectionProps) {
   const { collection } = props;
-  const docs = await getDocs(props.collection);
+  const docs = await getDocs(collection);
   if (!docs) return null;
   if (collection === 'posts') {
     return <PostsGrid docs={docs as Post[]} />;

@@ -101,16 +101,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  publishedDate: string;
-  categories: (string | Category)[];
-  relatedPosts?: (string | Post)[] | null;
-  slug?: string | null;
-  coverImage: {
-    type?: ('external' | 'local') | null;
-    localImage?: string | Media | null;
-    url?: string | null;
-    alt?: string | null;
-  };
+  coverImage?: string | Media | null;
   layout: (
     | {
         id: string | null;
@@ -158,6 +149,10 @@ export interface Post {
     description?: string | null;
     image?: string | Media | null;
   };
+  publishedDate: string;
+  categories: (string | Category)[];
+  relatedPosts?: (string | Post)[] | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;

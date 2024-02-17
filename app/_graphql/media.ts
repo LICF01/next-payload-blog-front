@@ -1,9 +1,9 @@
 export const MEDIA_FIELDS = `
 	id
-	mimeType
+	alt
 	filename
+	mimeType
 	url
 	width
 	height
-	alt
 `;

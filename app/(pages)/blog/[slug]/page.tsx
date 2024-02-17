@@ -45,8 +45,8 @@ export default async function CategoryPage({
 
       {doc.coverImage.url && (
         <Image
-          className='rounded-md object-cover'
-          src={doc.coverImage.url}
+          className='max-h-screen rounded-md object-cover'
+          src={'http://localhost:4000' + doc.coverImage.url}
           alt={doc.coverImage.alt || 'Cover Image'}
           loading='lazy'
           height={580}

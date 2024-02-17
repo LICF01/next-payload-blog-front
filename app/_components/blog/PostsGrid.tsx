@@ -9,7 +9,7 @@ type Props = {
   docs: Post[];
 };
 
-export default function postsGrid({ docs }: Props) {
+export default function PostsGrid({ docs }: Props) {
   const [currentColumnCount, setCurrentColumnCount] = useState(3);
   const columns: Post[][] = new Array(currentColumnCount)
     .fill(null)
@@ -38,15 +38,7 @@ export default function postsGrid({ docs }: Props) {
       {columns.map((col, colIndex) => (
         <div key={colIndex} className='grid gap-10'>
           {col.map((doc) => (
-            <Card
-              key={doc.slug}
-              slug={doc.slug}
-              title={doc.title}
-              description={doc.description}
-              coverImage={doc.coverImage}
-              categories={doc.categories}
-              publishedDate={doc.publishedDate}
-            />
+            <Card key={doc.slug} data={doc} />
           ))}
         </div>
       ))}

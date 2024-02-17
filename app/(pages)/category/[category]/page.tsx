@@ -5,7 +5,7 @@ import PostsGrid from '@/_components/blog/PostsGrid';
 
 export async function generateStaticParams() {
   try {
-    const categories = await fetchDocs<Category[]>('categories');
+    const categories = await fetchDocs<Category>('categories');
     return categories?.map(({ slug }) => ({
       slug,
     }));
@@ -21,7 +21,7 @@ export default async function CategoryPage({
 }) {
   const { id } = await fetchDoc<Category>({
     collection: 'categories',
-    slug: params.category,
+    slug: params.category.toLowerCase(),
   });
 
   let docs: Post[] | null = null;
