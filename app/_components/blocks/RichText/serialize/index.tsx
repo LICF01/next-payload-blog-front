@@ -118,6 +118,25 @@ export default function serialize({ children, parentNode = {} }) {
             </a>
           );
 
+        case 'upload':
+          if (
+            node.relationTo === 'media' &&
+            node.value.mimeType.includes('image')
+          ) {
+            const { url, alt } = node.value;
+            return (
+              <figure>
+                <img
+                  className='rounded-md'
+                  src={process.env.PAYLOAD_PUBLIC_SERVER_URL + url}
+                  alt={alt}
+                />
+                <figcaption className='text-center'>{alt}</figcaption>
+              </figure>
+            );
+          }
+          return;
+
         default:
           return <p key={i}>{serialize({ children: node.children })}</p>;
       }

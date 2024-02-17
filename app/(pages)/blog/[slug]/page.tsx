@@ -1,5 +1,6 @@
 import { fetchDoc } from '@/_api/fetchDoc';
 import { fetchDocs } from '@/_api/fetchDocs';
+import RelatedPosts from '@/_components/blog/RelatedPosts';
 import { Post } from '@/_types/payload-types';
 import RenderBlocks from '@/_utils/RenderBlocks';
 import formatDate from '@/_utils/formatDate';
@@ -43,16 +44,14 @@ export default async function CategoryPage({
       </div>
 
       {doc.coverImage.url && (
-        <div className=' relative mx-auto flex  h-[580px] justify-center '>
-          <Image
-            className='rounded-md object-cover'
-            src={doc.coverImage.url}
-            alt={doc.coverImage.alt || 'Cover Image'}
-            fill
-            loading='lazy'
-            sizes='100vw'
-          />
-        </div>
+        <Image
+          className='rounded-md object-cover'
+          src={doc.coverImage.url}
+          alt={doc.coverImage.alt || 'Cover Image'}
+          loading='lazy'
+          height={580}
+          width={1200}
+        />
       )}
 
       <div className='mx-auto mt-12 max-w-3xl'>

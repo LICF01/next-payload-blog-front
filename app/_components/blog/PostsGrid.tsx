@@ -36,7 +36,7 @@ export default function postsGrid({ docs }: Props) {
   return (
     <div className={gridClass}>
       {columns.map((col, colIndex) => (
-        <div key={colIndex} className='grid gap-2'>
+        <div key={colIndex} className='grid gap-10'>
           {col.map((doc) => (
             <Card
               key={doc.slug}

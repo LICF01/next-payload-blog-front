@@ -27,7 +27,7 @@ const config: Config = {
         '2xl': {
           css: {
             fontFamily: 'Crimson Pro variable',
-            fontSize: '22px',
+            fontSize: '18px',
             fontWeight: '300',
             p: {
               marginBottom: '1rem',
@@ -51,7 +51,7 @@ const config: Config = {
             blockquote: {
               fontFamily: 'Crimson Pro variable',
               fontStyle: 'italic',
-              fontSize: '26px',
+              fontSize: '24px',
               lineHeight: '1.3',
               fontWeight: '400',
             },

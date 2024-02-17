@@ -1,8 +1,8 @@
 import { blocks } from '@/_components/blocks';
-import { Page } from '@/_types/payload-types';
+import { Post } from '@/_types/payload-types';
 
 type Props = {
-  layout: Page['layout'];
+  layout: Post['layout'];
 };
 
 const RenderBlocks = ({ layout }: Props) =>
