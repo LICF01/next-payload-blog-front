@@ -64,7 +64,9 @@ export default async function CategoryPage({
           <RenderBlocks layout={doc.layout} />;
         </div>
       </section>
-      <RelatedPosts docs={doc.relatedPosts} />
+      {doc.relatedPosts && doc.relatedPosts.length > 0 && (
+        <RelatedPosts docs={doc.relatedPosts} />
+      )}
     </>
   );
 }
