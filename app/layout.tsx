@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/_components/header';
 import { Providers } from './_components/Providers';
 import { Crimson_Pro, Raleway } from 'next/font/google';
+import Footer from './_components/Footer';
 
 const crimsonPro = Crimson_Pro({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className='mx-auto h-full max-w-7xl'>{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
