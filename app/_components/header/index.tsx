@@ -3,6 +3,7 @@ import { fetchHeader } from '@/_api/fetchGlobals';
 import { Page } from '@/_types/payload-types';
 
 import Navigation from './Navigation';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const getHeader = async () => {
   try {
@@ -32,7 +33,10 @@ export default async function Header() {
       >
         <span>{!Array.isArray(header) && header?.siteName}</span>
       </a>
-      <Navigation navItems={navItems as Page[]} />
+      <div className='flex items-center gap-4'>
+        <Navigation navItems={navItems as Page[]} />
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 }
