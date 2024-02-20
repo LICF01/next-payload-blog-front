@@ -1,11 +1,38 @@
 import { fetchDoc } from '@/_api/fetchDoc';
 import { fetchDocs } from '@/_api/fetchDocs';
 import RelatedPosts from '@/_components/blog/RelatedPosts';
-import { Post } from '@/_types/payload-types';
+import { Media, Post } from '@/_types/payload-types';
 import RenderBlocks from '@/_utils/RenderBlocks';
 import formatDate from '@/_utils/formatDate';
 import { isCategory, isMedia } from '@/_utils/typeguards';
+import { ArrowDownCircle } from 'lucide-react';
 import Image from 'next/image';
+import { Button } from 'react-aria-components';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const doc = await fetchDoc<Post>({
+    collection: 'posts',
+    slug: params.slug,
+  });
+
+  return {
+    title: doc.meta?.title,
+    description: doc.meta?.description,
+    openGraph: {
+      images: [
+        {
+          url: isMedia(doc.meta?.image || '')
+            ? ((doc.meta?.image as Media).url as string)
+            : '',
+        },
+      ],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   try {
@@ -47,6 +74,10 @@ export default async function CategoryPage({
             )}
             {doc.publishedDate && <span>{formatDate(doc.publishedDate)}</span>}
           </div>
+
+          <Button className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'>
+            <ArrowDownCircle size={38} strokeWidth={1} />
+          </Button>
         </div>
 
         {doc.coverImage && isMedia(doc.coverImage) && (
