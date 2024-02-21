@@ -30,7 +30,7 @@ export default function RootLayout({
     <html
       lang='en'
       suppressHydrationWarning
-      className={`${crimsonPro.variable} ${raleway.variable}`}
+      className={`${crimsonPro.variable} ${raleway.variable} scroll-smooth`}
     >
       <body
         className={`flex min-h-lvh flex-col px-4 font-sans

@@ -13,10 +13,14 @@ export default function Footer() {
             Lucas Cubilla
           </Link>
         </span>
-        <Button className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'>
+        <a
+          className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'
+          href='#header'
+          aria-label='Scroll to top'
+        >
           <span>To top</span>
           <ArrowUpCircle size={38} strokeWidth={1} />
-        </Button>
+        </a>
       </div>
     </footer>
   );

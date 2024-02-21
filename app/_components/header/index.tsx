@@ -26,7 +26,10 @@ const getNavItems = async () => {
 export default async function Header() {
   const [navItems, header] = await Promise.all([getNavItems(), getHeader()]);
   return (
-    <header className='flex items-center justify-between py-[calc(var(--gap-padding))]'>
+    <header
+      id='header'
+      className='flex items-center justify-between py-[calc(var(--gap-padding))]'
+    >
       <a
         href='/'
         className='hover:text-primary group inline-flex text-2xl font-semibold uppercase tracking-widest transition focus-visible:outline-none'

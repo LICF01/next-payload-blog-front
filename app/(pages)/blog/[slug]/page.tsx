@@ -75,9 +75,13 @@ export default async function CategoryPage({
             {doc.publishedDate && <span>{formatDate(doc.publishedDate)}</span>}
           </div>
 
-          <Button className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'>
+          <a
+            href='#content'
+            aria-label='Scroll to content'
+            className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'
+          >
             <ArrowDownCircle size={38} strokeWidth={1} />
-          </Button>
+          </a>
         </div>
 
         {doc.coverImage && isMedia(doc.coverImage) && (
@@ -92,7 +96,7 @@ export default async function CategoryPage({
           />
         )}
 
-        <div className='mx-auto mt-12 max-w-3xl'>
+        <div id='content' className='mx-auto mt-12 max-w-3xl'>
           <RenderBlocks layout={doc.layout} />;
         </div>
       </section>
