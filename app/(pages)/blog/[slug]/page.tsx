@@ -86,6 +86,7 @@ export default async function CategoryPage({
             src={'http://localhost:4000' + doc.coverImage.url}
             alt={doc.coverImage.alt || 'Cover Image'}
             loading='lazy'
+            objectFit='cover'
             height={580}
             width={1200}
           />

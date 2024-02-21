@@ -23,8 +23,8 @@ export default function Navigation({ navItems }: { navItems: Page[] }) {
   }, [headerNav]);
 
   return (
-    <div>
-      <nav ref={ref}>
+    <>
+      <nav ref={ref} className='hidden md:block'>
         <ul className='flex gap-4'>
           {navItems
             ? navItems.map(({ slug, title, id }) => (
@@ -46,20 +46,18 @@ export default function Navigation({ navItems }: { navItems: Page[] }) {
             : null}
         </ul>
       </nav>
-      <>
-        <SideNavigationToggle
-          hidden={headerNav}
-          onClick={() => {
-            setIsActive(!isActive);
-          }}
-          isActive={isActive}
-        />
-        <SideNavigation
-          navItems={navItems}
-          isActive={isActive}
-          onClick={() => setIsActive(false)}
-        />
-      </>
-    </div>
+      <SideNavigationToggle
+        hidden={headerNav}
+        onClick={() => {
+          setIsActive(!isActive);
+        }}
+        isActive={isActive}
+      />
+      <SideNavigation
+        navItems={navItems}
+        isActive={isActive}
+        onClick={() => setIsActive(false)}
+      />
+    </>
   );
 }

@@ -31,7 +31,8 @@ export default function Card({ data }: { data: Post }) {
           alt={coverImage.alt}
           loading='lazy'
           sizes='100vw'
-          className='order-[-1]  rounded-md'
+          className='order-[-1]  min-h-[300px] rounded-md'
+          objectFit='cover'
           width={500}
           height={300}
         />
