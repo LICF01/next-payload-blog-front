@@ -10,7 +10,7 @@ export default function PageDescription({ title, description }: Props) {
         <p className='text-xs font-medium uppercase text-foreground/50'>
           {title}
         </p>
-        <h1 className='text-2xl font-light text-foreground md:text-4xl  lg:max-w-6xl lg:text-5xl'>
+        <h1 className='text-2xl font-light text-foreground md:text-4xl  lg:max-w-6xl lg:text-4xl'>
           {description}
         </h1>
       </div>
