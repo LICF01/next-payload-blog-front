@@ -96,8 +96,8 @@ export default async function CategoryPage({
           />
         )}
 
-        <div id='content' className='mx-auto mt-12 max-w-3xl'>
-          <RenderBlocks layout={doc.layout} />;
+        <div id='content' className='mx-auto mb-24 mt-12 max-w-3xl '>
+          <RenderBlocks layout={doc.layout} />
         </div>
       </section>
       {doc.relatedPosts && doc.relatedPosts.length > 0 && (

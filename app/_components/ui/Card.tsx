@@ -22,7 +22,7 @@ export default function Card({ data }: { data: Post }) {
         <span>-</span>
         {publishedDate && <span>{formatDate(publishedDate)}</span>}
       </div>
-      <h2 className='font-sans text-2xl font-normal text-foreground transition-colors duration-300 hover:text-accent md:text-3xl'>
+      <h2 className='font-sans text-2xl font-normal text-foreground transition-colors duration-300 hover:text-accent'>
         <Link href={`/blog/${slug}`}>{title}</Link>
       </h2>
       {coverImage && isMedia(coverImage) && (
