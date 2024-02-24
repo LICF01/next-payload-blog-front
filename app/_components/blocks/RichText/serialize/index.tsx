@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+// @ts-nocheck
 import escapeHTML from 'escape-html';
 import React, { Fragment } from 'react';
 

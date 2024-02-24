@@ -162,6 +162,11 @@ export interface Category {
   title?: string | null;
   description?: string | null;
   slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: string | Media | null;
+  };
   updatedAt: string;
   createdAt: string;
 }

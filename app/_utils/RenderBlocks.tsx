@@ -10,6 +10,7 @@ const RenderBlocks = ({ layout }: Props) =>
   layout.map((block, i) => {
     const Block = blocks[block.blockType];
     if (Block) {
+      // @ts-ignore
       return <Block key={i} {...block} />;
     }
     return null;

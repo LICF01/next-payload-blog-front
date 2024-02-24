@@ -10,4 +10,5 @@ export const blocks = {
   youTubeEmbed: YouTubeEmbed,
   collection: Collection,
   richText: RichText,
+  externalImage: '',
 };

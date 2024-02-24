@@ -27,7 +27,7 @@ export default function SideNavigationToggle({
   isActive,
 }: {
   hidden: boolean;
-  onClick: MouseEventHandler<HTMLButtonElement> | undefined;
+  onClick: ((isSelected: boolean) => void) | undefined;
   isActive: boolean;
 }) {
   return (
@@ -41,7 +41,7 @@ export default function SideNavigationToggle({
           <ToggleButton
             aria-label='toggle navigation'
             className={buttonStyles({ isActive })}
-            onClick={onClick}
+            onChange={onClick}
           >
             <div className={burguerStyles({ isActive })} />
           </ToggleButton>

@@ -48,9 +48,7 @@ export default function Navigation({ navItems }: { navItems: Page[] }) {
       </nav>
       <SideNavigationToggle
         hidden={headerNav}
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
+        onClick={setIsActive}
         isActive={isActive}
       />
       <SideNavigation

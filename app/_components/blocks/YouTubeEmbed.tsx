@@ -7,10 +7,10 @@ import { PlayCircle } from 'lucide-react';
 
 type YouTubeEmbedProps = {
   id: string | null;
-  title: string;
+  title?: string;
   description?: string | null;
   blockName?: string | null;
-  blockType: 'hero';
+  blockType: 'youTubeEmbed';
 };
 
 export default function YouTubeEmbed(props: YouTubeEmbedProps) {

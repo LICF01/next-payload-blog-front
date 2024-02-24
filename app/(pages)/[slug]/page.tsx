@@ -1,7 +1,7 @@
 import { fetchDoc } from '@/_api/fetchDoc';
 import { fetchDocs } from '@/_api/fetchDocs';
 import PageDescription from '@/_components/PageDescription';
-import { Media, Page } from '@/_types/payload-types';
+import { Media, Page, Post } from '@/_types/payload-types';
 import RenderBlocks from '@/_utils/RenderBlocks';
 import { isMedia } from '@/_utils/typeguards';
 import { Metadata } from 'next';
@@ -56,11 +56,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <PageDescription
-        title={page.title}
-        description='asdfasdgasdgasdgasdgasdgasdg'
-      />
-      <RenderBlocks layout={page.layout} />
+      <PageDescription title={page.title} description={page.description} />
+      <RenderBlocks layout={page.layout as Post['layout']} />
     </>
   );
 }
