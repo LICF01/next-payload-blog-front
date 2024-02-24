@@ -24,36 +24,16 @@ const config: Config = {
       },
 
       typography: {
-        '2xl': {
+        lg: {
           css: {
             fontFamily: 'Crimson Pro variable',
-            fontSize: '18px',
             fontWeight: '300',
             p: {
               marginBottom: '1rem',
+              color: 'hsl(var(--foreground))',
             },
             h1: {
               margin: 0,
-              fontSize: '4.768rem',
-            },
-            h2: {
-              fontSize: '2.441rem',
-            },
-            h3: {
-              fontSize: '1.953rem',
-            },
-            h4: {
-              fontSize: '1.563rem',
-            },
-            h5: {
-              fontSize: '1.25rem',
-            },
-            blockquote: {
-              fontFamily: 'Crimson Pro variable',
-              fontStyle: 'italic',
-              fontSize: '24px',
-              lineHeight: '1.3',
-              fontWeight: '400',
             },
           },
         },

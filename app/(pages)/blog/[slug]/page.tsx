@@ -57,7 +57,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <section className='prose prose-red w-full max-w-none pt-24 dark:prose-invert md:prose-lg lg:prose-2xl prose-headings:font-sans prose-headings:font-normal prose-img:m-0'>
+      <section className='prose prose-lg prose-red w-full max-w-none pt-24 dark:prose-invert prose-headings:font-sans prose-headings:font-normal prose-img:m-0'>
         <div className='mx-auto mb-12 flex max-w-6xl flex-col items-center justify-center gap-10'>
           <h1 className='text-center'>{doc.title}</h1>
 
