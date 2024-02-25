@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpCircle, MoveUp } from 'lucide-react';
+import { ArrowUpCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -21,7 +21,6 @@ export default function Footer() {
           href='#header'
           aria-label='Scroll to top'
         >
-          <span>To top</span>
           <ArrowUpCircle size={38} strokeWidth={1} />
         </a>
       </div>
