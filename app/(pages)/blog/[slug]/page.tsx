@@ -1,6 +1,7 @@
 import { fetchDoc } from '@/_api/fetchDoc';
 import { fetchDocs } from '@/_api/fetchDocs';
 import RelatedPosts from '@/_components/blog/RelatedPosts';
+import { IconButton } from '@/_components/ui/IconButton';
 import { Media, Post } from '@/_types/payload-types';
 import RenderBlocks from '@/_utils/RenderBlocks';
 import formatDate from '@/_utils/formatDate';
@@ -75,13 +76,12 @@ export default async function CategoryPage({
             {doc.publishedDate && <span>{formatDate(doc.publishedDate)}</span>}
           </div>
 
-          <a
+          <IconButton
+            as='a'
+            icon={<ArrowDownCircle size={38} strokeWidth={1} />}
             href='#content'
             aria-label='Scroll to content'
-            className='flex flex-row items-center gap-2 px-4  uppercase text-foreground/60'
-          >
-            <ArrowDownCircle size={38} strokeWidth={1} />
-          </a>
+          />
         </div>
 
         {doc.coverImage && isMedia(doc.coverImage) && (

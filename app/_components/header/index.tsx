@@ -38,9 +38,7 @@ export default async function Header() {
       </a>
       <div className='flex items-center gap-4'>
         <Navigation navItems={navItems as Page[]} />
-        <div className='hidden md:block'>
-          <ThemeSwitcher />
-        </div>
+        <ThemeSwitcher />
       </div>
     </header>
   );
