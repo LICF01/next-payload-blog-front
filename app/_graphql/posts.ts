@@ -14,6 +14,7 @@ export const POSTS = `
 				categories: { equals: $categoryId }
 				slug: { equals: $slug }
 			}
+			sort: "-publishedDate"
 		) {
 			docs {
 				id
