@@ -30,13 +30,24 @@ export default function serialize({ children, parentNode = {} }) {
         }
 
         if (node.format & IS_UNDERLINE) {
-          text = <span key={i}>{text}</span>;
+          text = (
+            <u class='underline' key={i}>
+              {text}
+            </u>
+          );
         }
 
         if (node.format & IS_STRIKETHROUGH) {
-          text = <span key={i}>{text}</span>;
+          text = <strike key={i}>{text}</strike>;
         }
 
+        if (node.format & IS_SUBSCRIPT) {
+          text = <sub key={i}>{text}</sub>;
+        }
+
+        if (node.format & IS_SUPERSCRIPT) {
+          text = <sup key={i}>{text}</sup>;
+        }
         return <Fragment key={i}>{text}</Fragment>;
       }
 
@@ -113,6 +124,7 @@ export default function serialize({ children, parentNode = {} }) {
               )}
               target={node.fields?.newTab ? '_blank' : '_self'}
               key={i}
+              className='link'
             >
               {serialize({ children: node.children })}
             </a>

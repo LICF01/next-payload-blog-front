@@ -25,6 +25,48 @@ body {
   --accent: 356.4 64.3% 46%;
 }
 
+@layer components {
+  .link {
+    position: relative;
+    transition: 0.5s color ease;
+    text-decoration: none;
+
+    & ::after {
+      content: '';
+      transition: 0.5s all ease;
+      backface-visibility: hidden;
+      position: absolute;
+      left: 0;
+      bottom: -0.25em;
+      height: 2px;
+      width: 0;
+      background: hsl(var(--accent));
+    }
+  }
+  .link:hover {
+    color: hsl(var(--accent));
+    ::after {
+      width: 100%;
+    }
+  }
+
+  .title {
+    text-decoration: none;
+    background-image: linear-gradient(
+      transparent calc(100% - 10px),
+      hsl(var(--accent) / 0.3) 10px
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: all 0.3s;
+  }
+
+  .title:hover {
+    color: hsl(var(--accent));
+    background-size: 100% 100%;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

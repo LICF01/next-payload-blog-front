@@ -8,6 +8,7 @@ import formatDate from '@/_utils/formatDate';
 import { isCategory, isMedia } from '@/_utils/typeguards';
 import { ArrowDownCircle } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from 'react-aria-components';
 
 export async function generateMetadata({
@@ -58,18 +59,19 @@ export default async function CategoryPage({
 
   return (
     <>
-      <section className='prose prose-lg prose-red w-full max-w-none pt-24 dark:prose-invert prose-headings:font-sans prose-headings:font-normal prose-img:m-0'>
+      <section className='prose prose-lg prose-red w-full max-w-none pt-24 dark:prose-invert prose-headings:font-sans prose-headings:font-normal prose-a:text-accent prose-a:underline prose-a:decoration-accent/30 prose-a:underline-offset-8 prose-img:m-0'>
         <div className='mx-auto mb-12 flex max-w-6xl flex-col items-center justify-center gap-10'>
           <h1 className='text-center'>{doc.title}</h1>
 
           <div className='flex justify-center gap-2 font-sans text-sm font-medium text-foreground/70'>
             {isCategory(doc.categories[0], 'title') && (
               <>
-                <a href={`/category/${doc.categories[0]?.title}`}>
-                  <span className='capitalize transition-colors duration-300 hover:text-accent'>
-                    {doc.categories[0]?.title}
-                  </span>
-                </a>
+                <Link
+                  href={`/category/${doc.categories[0]?.title}`}
+                  className='link lowercase'
+                >
+                  <span>{doc.categories[0]?.title}</span>
+                </Link>
                 <span>-</span>
               </>
             )}
@@ -80,6 +82,7 @@ export default async function CategoryPage({
             as='a'
             icon={<ArrowDownCircle size={38} strokeWidth={1} />}
             href='#content'
+            passHref={true}
             aria-label='Scroll to content'
           />
         </div>

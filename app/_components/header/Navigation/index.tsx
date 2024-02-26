@@ -25,21 +25,20 @@ export default function Navigation({ navItems }: { navItems: Page[] }) {
   return (
     <>
       <nav ref={ref} className='hidden md:block'>
-        <ul className='flex gap-4'>
+        <ul className='text-semibold flex gap-6 lowercase'>
           {navItems
             ? navItems.map(({ slug, title, id }) => (
-                <li key={id} className='flex items-center'>
-                  <Link href={`/${slug}`}>
-                    <span
-                      className={
-                        pathname === '/' + slug
-                          ? 'flex items-center pr-2 text-accent'
-                          : 'flex items-center hover:text-accent hover:underline'
-                      }
-                    >
-                      {pathname === '/' + slug && <Music2 size={15} />}
-                      {title}
-                    </span>
+                <li
+                  key={id}
+                  className={
+                    pathname.includes('/' + slug)
+                      ? 'flex items-center gap-1 text-accent'
+                      : 'flex items-center gap-1'
+                  }
+                >
+                  {pathname.includes('/' + slug) && <Music2 size={15} />}
+                  <Link href={`/${slug}`} className='link'>
+                    <span>{title}</span>
                   </Link>
                 </li>
               ))

@@ -28,11 +28,11 @@ export default async function Header() {
   return (
     <header
       id='header'
-      className='flex items-center justify-between py-[calc(var(--gap-padding))]'
+      className='mx-auto flex w-full max-w-7xl items-center justify-between py-[calc(var(--gap-padding))]'
     >
       <a
         href='/'
-        className='hover:text-primary group inline-flex text-2xl font-semibold uppercase tracking-widest transition focus-visible:outline-none'
+        className='title text-2xl font-semibold uppercase tracking-widest focus-visible:outline-none'
       >
         <span>{!Array.isArray(header) && header?.siteName}</span>
       </a>

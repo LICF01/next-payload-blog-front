@@ -13,17 +13,20 @@ export default function Card({ data }: { data: Post }) {
     <article className='flex flex-col gap-2'>
       <div className='flex gap-2 text-sm font-medium text-foreground/70'>
         {categories[0] && isCategory(categories[0], 'title') && (
-          <a href={`/category/${categories[0]?.title}`}>
-            <span className='font-normal capitalize transition-colors duration-300 hover:text-accent'>
-              {categories[0]?.title}
-            </span>
-          </a>
+          <Link
+            href={`/category/${categories[0]?.title}`}
+            className='link lowercase'
+          >
+            <span>{categories[0]?.title}</span>
+          </Link>
         )}
         <span>-</span>
         {publishedDate && <span>{formatDate(publishedDate)}</span>}
       </div>
-      <h2 className='font-sans text-2xl font-normal text-foreground transition-colors duration-300 hover:text-accent'>
-        <Link href={`/blog/${slug}`}>{title}</Link>
+      <h2 className='font-sans text-2xl font-normal text-foreground'>
+        <Link href={`/blog/${slug}`} className='title'>
+          {title}
+        </Link>
       </h2>
       {coverImage && isMedia(coverImage) && (
         <Image

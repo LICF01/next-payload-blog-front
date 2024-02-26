@@ -37,14 +37,14 @@ export default function SideNavigation({ navItems, isActive, onClick }: Props) {
               aria-hidden='true'
               className=' box-border flex h-full flex-col justify-center '
             >
-              <ul className='mt-20 flex flex-col gap-3 text-6xl'>
+              <ul className='mt-20 flex flex-col gap-6 text-6xl'>
                 {navItems
                   ? navItems.map((data, i) => (
                       <li key={data.id}>
                         <SlideNavigationLink
                           data={data}
                           index={i}
-                          isActive={pathname === '/' + data.slug}
+                          isActive={pathname.includes('/' + data.slug)}
                           onClick={onClick}
                         />
                       </li>

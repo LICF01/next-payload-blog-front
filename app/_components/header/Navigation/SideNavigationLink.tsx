@@ -34,8 +34,13 @@ export default function SideNavigationLink(props: Props) {
           <Music2 />
         </motion.div>
       )}
-      <Link href={`/${slug}`} onClick={onClick}>
-        {title}
+      <Link
+        href={`/${slug}`}
+        onClick={onClick}
+        aria-label={'navigate to ' + title}
+        className='link'
+      >
+        <span>{title}</span>
       </Link>
     </motion.div>
   );
